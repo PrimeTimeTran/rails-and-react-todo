@@ -6,5 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-List.create(title:"West Sweden Road Trip", excerpt:"A cool road trip with stops in harbors of the coast")
-List.create(title:"Must have equipment for the outdoor photographer", excerpt:"My selection of gear for modern outdoor photography")
+4.times do
+  List.create(
+    title: Faker::Company.name,
+    excerpt: Faker::Lorem.paragraphs((1..5).to_a.sample, true).join(' ')
+  )
+end

@@ -1,9 +1,12 @@
 import React from 'react';
 
-const List = ({list}) =>
-  <div className="single-list" key={list.id}>
-      <h4>{list.title}</h4>
+const List = ({ list, onRemoveList }) => {
+  return (
+    <div className="single-list" key={list.id}>
+      <h4 onClick={() => onRemoveList(list.id)}>{list.title}</h4>
       <p>{list.excerpt}</p>
-  </div>
+    </div>
+  )
+}
 
 export default List;

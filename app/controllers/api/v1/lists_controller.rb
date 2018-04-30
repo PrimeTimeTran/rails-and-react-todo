@@ -47,7 +47,7 @@ module Api::V1
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_list
-        @list = List.find(params[:id])
+        @list = List.find(params[:id].to_i)
       end
 
       # Only allow a trusted parameter "white list" through.

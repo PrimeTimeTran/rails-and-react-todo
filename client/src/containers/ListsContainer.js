@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+// import { API_ROOT } from '../api-config.js';
+import { initialLists, removeList } from '../actions/ListUpdateAction';
 
 import List from '../components/List';
 import NewListForm from '../components/NewListForm';
@@ -7,33 +12,19 @@ import NewListForm from '../components/NewListForm';
 class ListsContainer extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-        lists: [],
-        editingListId: null
-    }
-    this.addNewList = this.addNewList.bind(this)
+    this.props.initialLists();
   }
 
-  componentDidMount() {
-    axios.get('http://localhost:3001/api/v1/lists.json')
-    .then(response => {
-      console.log(response)
-      this.setState({
-          lists: response.data
-      })
-    })
-    .catch(error => console.log(error))
-  }
-
-  addNewList(name) {
-    console.log('This is a new list: ', name)
+  removeList(listId) {
+    this.props.removeList(listId);
   }
 
   render() {
+    const { lists } = this.props;
     return (
       <div className="lists-container">
-        {this.state.lists.map( list => {
-            return (<List list={list} key={list.id} onRemoveList={this.removeList} />                    )
+        {lists.map(list => {
+            return (<List list={list} key={list.id} onRemoveList={this.removeList.bind(this)} />)
         })}
         <NewListForm onNewList={this.addNewList} />
       </div>
@@ -41,4 +32,13 @@ class ListsContainer extends Component {
   }
 }
 
-export default ListsContainer;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    removeList, initialLists }, dispatch)
+}
+
+const mapReduxStateToProps = ({ lists }) => {
+  return { lists };
+};
+
+export default connect(mapReduxStateToProps, mapDispatchToProps)(ListsContainer);
