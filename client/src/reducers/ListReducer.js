@@ -17,6 +17,7 @@ export default (state = INITIAL_STATE, action) => {
         if (giveBack) {
           return el
         }
+        return undefined
       });
       arr = arr.filter(item => item !== undefined);
 

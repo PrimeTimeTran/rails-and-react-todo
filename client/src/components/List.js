@@ -1,11 +1,14 @@
 import React from 'react';
+import { Panel } from 'react-bootstrap'
 
 const List = ({ list, onRemoveList }) => {
   return (
-    <div className="single-list" key={list.id}>
-      <h4 onClick={() => onRemoveList(list.id)}>{list.title}</h4>
-      <p>{list.excerpt}</p>
-    </div>
+    <Panel bsStyle="primary key={list.id}">
+      <Panel.Heading onClick={() => onRemoveList(list.id)}>
+        <Panel.Title componentClass="h3">{list.title}</Panel.Title>
+      </Panel.Heading>
+      <Panel.Body>{list.excerpt}</Panel.Body>
+    </Panel>
   )
 }
 

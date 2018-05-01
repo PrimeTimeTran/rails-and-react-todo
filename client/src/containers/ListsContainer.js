@@ -22,7 +22,7 @@ class ListsContainer extends Component {
   render() {
     const { lists } = this.props;
     return (
-      <div className="lists-container">
+      <div>
         {lists.map(list => {
             return (<List list={list} key={list.id} onRemoveList={this.removeList.bind(this)} />)
         })}
