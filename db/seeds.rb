@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-4.times do
+10.times do
   List.create(
     title: Faker::Company.name,
     excerpt: Faker::Lorem.paragraphs((1..5).to_a.sample, true).join(' ')

@@ -8,6 +8,7 @@ import {
 } from './types'
 
 export const removeList = (listId) => {
+  axios.delete(`${API_ROOT}/lists/${listId}`)
   return (dispatch) => {
     dispatch({ type: REMOVE_LIST, payload: listId })
   }

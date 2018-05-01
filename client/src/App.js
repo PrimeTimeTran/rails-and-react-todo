@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
+import { Grid, Row, Col } from 'react-bootstrap'
 
 import './App.css';
 import reducers from './reducers';
@@ -16,7 +17,17 @@ class App extends Component {
     return (
       <div className="App">
         <Provider store={store}>
-          <ListsContainer />
+          <Grid>
+          <Row className="show-grid">
+            <Col xs={12} md={8}>
+              <ListsContainer />
+            </Col>
+            <Col xs={6} md={4}>
+              <code>&lt;{'Col xs={6} md={4}'} /">&gt;</code>
+            </Col>
+          </Row>
+
+          </Grid>
         </Provider>
       </div>
     );
@@ -24,3 +35,66 @@ class App extends Component {
 }
 
 export default App;
+
+// import React from 'react';
+// import PropTypes from 'prop-types';
+
+// class MousePositionProvider extends React.Component {
+//   constructor( ) {
+//     super();
+//     this.state = { };
+//     this.onMouseMove = this.onMouseMove.bind( this );
+//   }
+
+//   getChildContext() {
+//     return {
+//       posX: this.state.posX,
+//       posY: this.state.posY
+//     };
+//   }
+
+//   componentDidMount( ) {
+//     window.addEventListener( "mousemove", this.onMouseMove );
+//   }
+
+//   onMouseMove( e ) {
+//     this.setState({ posX: e.clientX, posY: e.clientY });
+//   }
+
+//   render( ) {
+//     return this.props.children
+//   }
+// }
+
+// MousePositionProvider.childContextTypes = {
+//   posX: PropTypes.number,
+//   posY: PropTypes.number
+// };
+
+
+
+// class MousePositionConsumer extends React.Component {
+//   render( ) {
+//     return (
+//       <div>Your position is ( {this.context.posX},{this.context.posY} )</div>
+//     )
+//   }
+// }
+
+// MousePositionConsumer.contextTypes = {
+//   posX: PropTypes.number,
+//   posY: PropTypes.number
+// };
+
+
+
+// const App = () => (
+//   <MousePositionProvider>
+//     <div>
+//       <MousePositionConsumer />
+//       <MousePositionConsumer />
+//     </div>
+//   </MousePositionProvider>
+// );
+
+// export default App
