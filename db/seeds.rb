@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create(email: 'datloiboi@gmail.com', password: 'asdf', password_confirmation: 'asdf') if User.first.nil?
+
 10.times do
   List.create(
     title: Faker::Company.name,

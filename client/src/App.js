@@ -10,6 +10,7 @@ import reducers from './reducers';
 import ListsContainer from './containers/ListsContainer';
 import Navbar from './containers/Navbar';
 import { Button } from 'react-bootstrap';
+import NewPostForm from './components/NewPostForm';
 
 class App extends Component {
   constructor(props) {
@@ -49,6 +50,7 @@ class App extends Component {
           <Grid>
             <Row className="show-grid" style={styles.firstRow}>
               <Col xs={12} md={8}>
+                <NewPostForm />
                 <ListsContainer />
               </Col>
               <Col xs={0} md={4}>
