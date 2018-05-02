@@ -1,6 +1,6 @@
 import {
-  INITIAL_LIST,
-  REMOVE_LIST,
+  POST_INITIAL,
+  POST_REMOVE,
   ADD_POST
 } from '../actions/types';
 
@@ -8,7 +8,7 @@ const INITIAL_STATE = []
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case REMOVE_LIST:
+    case POST_REMOVE:
       let arr = []
       arr = arr.concat(state)
 
@@ -22,12 +22,11 @@ export default (state = INITIAL_STATE, action) => {
       arr = arr.filter(item => item !== undefined);
 
       return arr
-    case INITIAL_LIST:
+
+    case POST_INITIAL:
       return action.payload
 
     case ADD_POST:
-      console.log('Adding a Post')
-      console.log('Actions Payload: ', action.payload)
       return [ action.payload, ...state ]
 
     default:

@@ -7,7 +7,7 @@ import { Grid, Row, Col, Modal } from 'react-bootstrap'
 import './App.css';
 import reducers from './reducers';
 
-import ListsContainer from './containers/ListsContainer';
+import PostsContainer from './containers/PostsContainer';
 import Navbar from './containers/Navbar';
 import { Button } from 'react-bootstrap';
 import NewPostForm from './components/NewPostForm';
@@ -51,7 +51,7 @@ class App extends Component {
             <Row className="show-grid" style={styles.firstRow}>
               <Col xs={12} md={8} xsOffset={2}>
                 <NewPostForm _handleClick={this.handleClick.bind(this)}/>
-                <ListsContainer />
+                <PostsContainer />
               </Col>
             </Row>
 

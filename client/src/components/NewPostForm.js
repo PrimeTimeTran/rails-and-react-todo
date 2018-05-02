@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import { API_ROOT } from '../api-config.js';
 
-import { addPost } from '../actions/ListUpdateAction';
+import { addPost } from '../actions/PostActions';
 import { FormGroup, ControlLabel, FormControl, HelpBlock, InputGroup, Glyphicon } from 'react-bootstrap'
 
  class NewPostForm extends Component {

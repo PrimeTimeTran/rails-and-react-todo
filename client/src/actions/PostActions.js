@@ -3,33 +3,29 @@ import axios from 'axios';
 import { API_ROOT } from '../api-config.js';
 
 import {
-  INITIAL_LIST,
-  REMOVE_LIST,
+  POST_INITIAL,
+  POST_REMOVE,
   ADD_POST
 } from './types'
 
-export const removeList = (listId) => {
-  axios.delete(`${API_ROOT}/lists/${listId}`)
+export const removePost = (postId) => {
+  axios.delete(`${API_ROOT}/lists/${postId}`)
   return (dispatch) => {
-    dispatch({ type: REMOVE_LIST, payload: listId })
+    dispatch({ type: POST_REMOVE, payload: postId })
   }
 }
 
-export const initialLists = () => {
+export const initialPosts = () => {
   return (dispatch) => {
     axios.get(`${API_ROOT}/lists`)
       .then(response => {
-        dispatch({ type: INITIAL_LIST, payload: response.data })
+        dispatch({ type: POST_INITIAL, payload: response.data })
       })
   }
 }
 
 export const addPost = (list) => {
-  console.log('Adding Post Action')
-  console.log(list)
-
-
-  return(dispatch) => {
+    return(dispatch) => {
     axios({
       method: 'post',
       url: `${API_ROOT}/lists`,
