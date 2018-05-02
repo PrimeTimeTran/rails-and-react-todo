@@ -4,7 +4,8 @@ import { API_ROOT } from '../api-config.js';
 
 import {
   INITIAL_LIST,
-  REMOVE_LIST
+  REMOVE_LIST,
+  ADD_POST
 } from './types'
 
 export const removeList = (listId) => {
@@ -18,8 +19,25 @@ export const initialLists = () => {
   return (dispatch) => {
     axios.get(`${API_ROOT}/lists`)
       .then(response => {
-        // console.log('ACTION: Lists in InitialLists', response.data)
         dispatch({ type: INITIAL_LIST, payload: response.data })
       })
+  }
+}
+
+export const addPost = (list) => {
+  console.log('Adding Post Action')
+  console.log(list)
+
+
+  return(dispatch) => {
+    axios({
+      method: 'post',
+      url: `${API_ROOT}/lists`,
+      data: {
+        list
+      }
+    }).then(response => {
+      dispatch({ type: ADD_POST, payload: response.data })
+    })
   }
 }

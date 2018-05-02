@@ -1,6 +1,7 @@
 import {
   INITIAL_LIST,
-  REMOVE_LIST
+  REMOVE_LIST,
+  ADD_POST
 } from '../actions/types';
 
 const INITIAL_STATE = []
@@ -8,7 +9,6 @@ const INITIAL_STATE = []
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case REMOVE_LIST:
-      console.log('Removing List')
       let arr = []
       arr = arr.concat(state)
 
@@ -23,8 +23,13 @@ export default (state = INITIAL_STATE, action) => {
 
       return arr
     case INITIAL_LIST:
-      // console.log('REDUCER: Initial List Reducer', action.payload)
       return action.payload
+
+    case ADD_POST:
+      console.log('Adding a Post')
+      console.log('Actions Payload: ', action.payload)
+      return [ action.payload, ...state ]
+
     default:
       return state;
   }
