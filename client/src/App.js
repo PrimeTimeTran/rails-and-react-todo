@@ -24,13 +24,13 @@ class App extends Component {
   };
 
   handleClick() {
-    if (!this.state.popupVisible) {
-      document.addEventListener('click', this.handleOutsideClick, false);
-    } else {
-      document.removeEventListener('click', this.handleOutsideClick, false);
-    }
+    // if (!this.state.popupVisible) {
+    //   document.addEventListener('click', this.handleOutsideClick, false);
+    // } else {
+    //   document.removeEventListener('click', this.handleOutsideClick, false);
+    // }
 
-    this.setState(prevState => ({ popupVisible: !prevState.popupVisible }));
+    // this.setState(prevState => ({ popupVisible: !prevState.popupVisible }));
   }
 
   handleOutsideClick(e) {
@@ -49,12 +49,9 @@ class App extends Component {
         <Provider store={store}>
           <Grid>
             <Row className="show-grid" style={styles.firstRow}>
-              <Col xs={12} md={8}>
-                <NewPostForm />
+              <Col xs={12} md={8} xsOffset={2}>
+                <NewPostForm _handleClick={this.handleClick.bind(this)}/>
                 <ListsContainer />
-              </Col>
-              <Col xs={0} md={4}>
-                <Button onClick={this.handleClick}>New Post</Button>
               </Col>
             </Row>
 
@@ -111,7 +108,7 @@ class App extends Component {
 
 const styles = {
   firstRow: {
-    backgroundColor: 'red'
+    backgroundColor: '#e9ebee'
   },
   secondRow: {
     backgroundColor: 'pink'

@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux';
 import { initialLists, removeList } from '../actions/ListUpdateAction';
 
 import List from '../components/List';
-import NewPostForm from '../components/NewPostForm';
 
 class ListsContainer extends Component {
   constructor(props) {
